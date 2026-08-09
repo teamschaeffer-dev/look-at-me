@@ -76,7 +76,7 @@ for manager in managers:
         'series_types': {
             'fct_quota.total_quota_amount': 'scatter'
         },
-        'advanced_vis_config': '|-\n' + ' ' * 8 + '{\n' + ' ' * 8 + '  "series": [\n' + ' ' * 8 + '    {},\n' + ' ' * 8 + '    {\n' + ' ' * 8 + '      "marker": {\n' + ' ' * 8 + '        "symbol": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjMwIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==)"\n' + ' ' * 8 + '      }\n' + ' ' * 8 + '    }\n' + ' ' * 8 + '  ]\n' + ' ' * 8 + '}',
+        'advanced_vis_config': '|-\n' + ' ' * 8 + '{\n' + ' ' * 8 + '  "series": [\n' + ' ' * 8 + '    {},\n' + ' ' * 8 + '    {\n' + ' ' * 8 + '      "marker": {\n' + ' ' * 8 + '        "symbol": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjMwIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==)"\n' + ' ' * 8 + '      },\n' + ' ' * 8 + '      "dataLabels": {\n' + ' ' * 8 + '        "enabled": false\n' + ' ' * 8 + '      }\n' + ' ' * 8 + '    }\n' + ' ' * 8 + '  ]\n' + ' ' * 8 + '}',
         'x_axis_gridlines': False,
         'y_axis_gridlines': True,
         'show_view_names': False,
