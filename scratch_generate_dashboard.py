@@ -164,6 +164,12 @@ for manager in managers:
                 'fields': ['fct_opportunity_split.attainment_percent']
             }
         ],
+        'series_cell_visualizations': {
+            'fct_quota.total_quota_amount': {'is_active': False},
+            'fct_opportunity_split.won_amount': {'is_active': False},
+            'fct_opportunity_split.attainment_percent': {'is_active': True},
+            'fct_opportunity_split.gap_to_quota': {'is_active': False}
+        },
         'listen': {
             'Quota Year': 'fct_quota.quota_date_year',
             'Quota Type': 'fct_quota.quota_type'
