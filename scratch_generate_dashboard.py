@@ -53,6 +53,28 @@ for manager in managers:
     })
     row_idx += 2
     
+    # Gauge Chart
+    dashboard['elements'].append({
+        'name': f'gauge_{manager_id}',
+        'title': f'{manager} - Manager Attainment',
+        'model': 'gtm_analytics',
+        'explore': 'fct_quota',
+        'type': 'looker_column',
+        'fields': [
+            'fct_opportunity_split.manager_attainment_percent'
+        ],
+        'filters': {'dim_user.manager_name': f'"{manager}"'},
+        'listen': {
+            'Quota Year': 'fct_quota.quota_date_year',
+            'Quota Type': 'fct_quota.quota_type'
+        },
+        'advanced_vis_config': '|-\n' + ' ' * 8 + '{\n' + ' ' * 8 + '  "chart": { "type": "solidgauge" },\n' + ' ' * 8 + '  "yAxis": [{ "min": 0, "max": 1 }],\n' + ' ' * 8 + '  "pane": {\n' + ' ' * 8 + '    "center": ["50%", "85%"],\n' + ' ' * 8 + '    "size": "140%",\n' + ' ' * 8 + '    "startAngle": -90,\n' + ' ' * 8 + '    "endAngle": 90,\n' + ' ' * 8 + '    "background": {\n' + ' ' * 8 + '      "innerRadius": "60%",\n' + ' ' * 8 + '      "outerRadius": "100%",\n' + ' ' * 8 + '      "shape": "arc"\n' + ' ' * 8 + '    }\n' + ' ' * 8 + '  }\n' + ' ' * 8 + '}',
+        'row': row_idx,
+        'col': 0,
+        'width': 6,
+        'height': 8
+    })
+
     # Chart (Looker Bar with Advanced Vis Config)
     dashboard['elements'].append({
         'name': f'chart_{manager_id}',
@@ -106,8 +128,8 @@ for manager in managers:
             'fct_quota.total_quota_amount': 'Quota ($)'
         },
         'row': row_idx,
-        'col': 0,
-        'width': 12,
+        'col': 6,
+        'width': 8,
         'height': 8
     })
     
@@ -183,8 +205,8 @@ for manager in managers:
             'fct_opportunity_split.gap_to_quota': 'Gap to Quota'
         },
         'row': row_idx,
-        'col': 12,
-        'width': 12,
+        'col': 14,
+        'width': 10,
         'height': 8
     })
     row_idx += 8

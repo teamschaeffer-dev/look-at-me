@@ -39,6 +39,38 @@
       width: 24
       height: 2
 
+    - name: gauge_chris_welch
+      title: "Chris Welch - Manager Attainment"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_column
+      fields: [fct_opportunity_split.manager_attainment_percent]
+      filters:
+        dim_user.manager_name: "Chris Welch"
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      advanced_vis_config: |-
+        {
+          "chart": { "type": "solidgauge" },
+          "yAxis": [{ "min": 0, "max": 1 }],
+          "pane": {
+            "center": ["50%", "85%"],
+            "size": "140%",
+            "startAngle": -90,
+            "endAngle": 90,
+            "background": {
+              "innerRadius": "60%",
+              "outerRadius": "100%",
+              "shape": "arc"
+            }
+          }
+        }
+      row: 2
+      col: 0
+      width: 6
+      height: 8
+
     - name: chart_chris_welch
       title: "Chris Welch Team - Sales vs Quota"
       model: gtm_analytics
@@ -96,8 +128,8 @@
         fct_opportunity_split.won_amount: "Closed Won Sales ($)"
         fct_quota.total_quota_amount: "Quota ($)"
       row: 2
-      col: 0
-      width: 12
+      col: 6
+      width: 8
       height: 8
 
     - name: table_chris_welch
@@ -161,8 +193,8 @@
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
       row: 2
-      col: 12
-      width: 12
+      col: 14
+      width: 10
       height: 8
 
     - name: header_ian_race
@@ -172,6 +204,38 @@
       col: 0
       width: 24
       height: 2
+
+    - name: gauge_ian_race
+      title: "Ian Race - Manager Attainment"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_column
+      fields: [fct_opportunity_split.manager_attainment_percent]
+      filters:
+        dim_user.manager_name: "Ian Race"
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      advanced_vis_config: |-
+        {
+          "chart": { "type": "solidgauge" },
+          "yAxis": [{ "min": 0, "max": 1 }],
+          "pane": {
+            "center": ["50%", "85%"],
+            "size": "140%",
+            "startAngle": -90,
+            "endAngle": 90,
+            "background": {
+              "innerRadius": "60%",
+              "outerRadius": "100%",
+              "shape": "arc"
+            }
+          }
+        }
+      row: 12
+      col: 0
+      width: 6
+      height: 8
 
     - name: chart_ian_race
       title: "Ian Race Team - Sales vs Quota"
@@ -230,8 +294,8 @@
         fct_opportunity_split.won_amount: "Closed Won Sales ($)"
         fct_quota.total_quota_amount: "Quota ($)"
       row: 12
-      col: 0
-      width: 12
+      col: 6
+      width: 8
       height: 8
 
     - name: table_ian_race
@@ -295,8 +359,8 @@
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
       row: 12
-      col: 12
-      width: 12
+      col: 14
+      width: 10
       height: 8
 
     - name: header_jim_oakes
@@ -306,6 +370,38 @@
       col: 0
       width: 24
       height: 2
+
+    - name: gauge_jim_oakes
+      title: "Jim Oakes - Manager Attainment"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_column
+      fields: [fct_opportunity_split.manager_attainment_percent]
+      filters:
+        dim_user.manager_name: "Jim Oakes"
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      advanced_vis_config: |-
+        {
+          "chart": { "type": "solidgauge" },
+          "yAxis": [{ "min": 0, "max": 1 }],
+          "pane": {
+            "center": ["50%", "85%"],
+            "size": "140%",
+            "startAngle": -90,
+            "endAngle": 90,
+            "background": {
+              "innerRadius": "60%",
+              "outerRadius": "100%",
+              "shape": "arc"
+            }
+          }
+        }
+      row: 22
+      col: 0
+      width: 6
+      height: 8
 
     - name: chart_jim_oakes
       title: "Jim Oakes Team - Sales vs Quota"
@@ -364,8 +460,8 @@
         fct_opportunity_split.won_amount: "Closed Won Sales ($)"
         fct_quota.total_quota_amount: "Quota ($)"
       row: 22
-      col: 0
-      width: 12
+      col: 6
+      width: 8
       height: 8
 
     - name: table_jim_oakes
@@ -429,8 +525,8 @@
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
       row: 22
-      col: 12
-      width: 12
+      col: 14
+      width: 10
       height: 8
 
     - name: header_jennifer_marsland
@@ -440,6 +536,38 @@
       col: 0
       width: 24
       height: 2
+
+    - name: gauge_jennifer_marsland
+      title: "Jennifer Marsland - Manager Attainment"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_column
+      fields: [fct_opportunity_split.manager_attainment_percent]
+      filters:
+        dim_user.manager_name: "Jennifer Marsland"
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      advanced_vis_config: |-
+        {
+          "chart": { "type": "solidgauge" },
+          "yAxis": [{ "min": 0, "max": 1 }],
+          "pane": {
+            "center": ["50%", "85%"],
+            "size": "140%",
+            "startAngle": -90,
+            "endAngle": 90,
+            "background": {
+              "innerRadius": "60%",
+              "outerRadius": "100%",
+              "shape": "arc"
+            }
+          }
+        }
+      row: 32
+      col: 0
+      width: 6
+      height: 8
 
     - name: chart_jennifer_marsland
       title: "Jennifer Marsland Team - Sales vs Quota"
@@ -498,8 +626,8 @@
         fct_opportunity_split.won_amount: "Closed Won Sales ($)"
         fct_quota.total_quota_amount: "Quota ($)"
       row: 32
-      col: 0
-      width: 12
+      col: 6
+      width: 8
       height: 8
 
     - name: table_jennifer_marsland
@@ -563,6 +691,6 @@
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
       row: 32
-      col: 12
-      width: 12
+      col: 14
+      width: 10
       height: 8

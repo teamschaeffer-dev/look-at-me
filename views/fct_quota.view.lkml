@@ -44,4 +44,11 @@ view: fct_quota {
     value_format_name: usd_millions
     sql: ${quota_amount} ;;
   }
+
+  measure: manager_quota {
+    label: "Manager Quota (USD)"
+    type: number
+    value_format_name: usd_millions
+    sql: ${total_quota_amount} * 0.9 ;;
+  }
 }

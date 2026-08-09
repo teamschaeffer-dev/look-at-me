@@ -220,7 +220,12 @@ view: fct_opportunity_split {
     sql: ${fct_quota.total_quota_amount} - ${won_amount} ;;
   }
 
-
+  measure: manager_attainment_percent {
+    label: "Manager Attainment %"
+    type: number
+    value_format_name: percent_2
+    sql: ${won_amount} / nullif(${fct_quota.manager_quota}, 0) ;;
+  }
 
   measure: open_pipeline_qualified_amount {
     type: sum
