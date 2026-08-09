@@ -14,7 +14,7 @@
       ui_config:
         type: advanced
         display: popover
-      model: sales_performance
+      model: gtm_analytics
       explore: fct_quota
       field: fct_quota.quota_date_year
 
@@ -27,14 +27,14 @@
       ui_config:
         type: dropdown_menu
         display: inline
-      model: sales_performance
+      model: gtm_analytics
       explore: fct_quota
       field: fct_quota.quota_type
 
   elements:
     - name: sales_vs_quota_chart
       title: "Closed Won Sales vs Quota by Sales Rep"
-      model: sales_performance
+      model: gtm_analytics
       explore: fct_quota
       type: looker_column
       fields: [
@@ -82,7 +82,7 @@
 
     - name: sales_vs_quota_table
       title: "Sales Rep Quota Attainment Summary"
-      model: sales_performance
+      model: gtm_analytics
       explore: fct_quota
       type: looker_grid
       fields: [
