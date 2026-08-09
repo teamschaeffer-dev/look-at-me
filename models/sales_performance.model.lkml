@@ -1,6 +1,7 @@
 connection: "snowflake_sales_db"
 
 include: "/views/*.view.lkml"
+include: "/dashboards/*.dashboard.lookml"
 
 explore: fct_quota {
   label: "Sales Performance Dashboard"
