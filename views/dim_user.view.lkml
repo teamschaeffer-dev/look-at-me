@@ -1,5 +1,5 @@
 view: dim_user {
-  sql_table_name: `fake_db.fake_schema.v_dim_user` ;;
+  sql_table_name: (SELECT * FROM `fake_db.fake_schema.v_dim_user` WHERE manager_name IN ('Chris Welch','Ian Race','Jim Oakes','Jennifer Marsland')) ;;
 
   dimension: user_id {
     primary_key: yes
