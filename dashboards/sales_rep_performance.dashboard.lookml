@@ -39,12 +39,70 @@
       width: 24
       height: 2
 
+    - name: chart_chris_welch
+      title: "Chris Welch Team - Sales vs Quota"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_bar
+      fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
+      filters:
+        dim_user.manager_name: "Chris Welch"
+      sorts: ["fct_opportunity_split.won_amount desc"]
+      limit: 500
+      column_limit: 50
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      series_types:
+        fct_quota.total_quota_amount: scatter
+      advanced_vis_config: |-
+        {
+          "series": [
+            {},
+            {
+              "marker": {
+                "symbol": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjMwIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==)"
+              }
+            }
+          ]
+        }
+      x_axis_gridlines: false
+      y_axis_gridlines: true
+      show_view_names: false
+      show_y_axis_labels: true
+      show_y_axis_ticks: true
+      y_axis_tick_density: default
+      show_x_axis_label: true
+      show_x_axis_ticks: true
+      x_axis_label: "Sales Rep"
+      legend_position: top
+      point_style: none
+      show_value_labels: true
+      label_density: 25
+      x_axis_scale: auto
+      y_axis_combined: true
+      ordering: none
+      show_null_labels: false
+      show_totals_labels: false
+      show_silhouette: false
+      totals_color: #808080
+      series_colors:
+        fct_opportunity_split.won_amount: #1A73E8
+        fct_quota.total_quota_amount: #34A853
+      series_labels:
+        fct_opportunity_split.won_amount: "Closed Won Sales ($)"
+        fct_quota.total_quota_amount: "Quota ($)"
+      row: 2
+      col: 0
+      width: 12
+      height: 8
+
     - name: table_chris_welch
       title: "Chris Welch Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_bullet_chart, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
         dim_user.manager_name: "Chris Welch"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -88,28 +146,85 @@
         dim_user.region: Region
         fct_quota.total_quota_amount: Quota
         fct_opportunity_split.won_amount: "Closed Won Sales"
-        fct_opportunity_split.attainment_bullet_chart: "Attainment Chart"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
       row: 2
-      col: 0
-      width: 24
-      height: 12
+      col: 12
+      width: 12
+      height: 8
 
     - name: header_ian_race
       type: text
       title_text: "Team: Ian Race"
-      row: 14
+      row: 10
       col: 0
       width: 24
       height: 2
+
+    - name: chart_ian_race
+      title: "Ian Race Team - Sales vs Quota"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_bar
+      fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
+      filters:
+        dim_user.manager_name: "Ian Race"
+      sorts: ["fct_opportunity_split.won_amount desc"]
+      limit: 500
+      column_limit: 50
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      series_types:
+        fct_quota.total_quota_amount: scatter
+      advanced_vis_config: |-
+        {
+          "series": [
+            {},
+            {
+              "marker": {
+                "symbol": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjMwIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==)"
+              }
+            }
+          ]
+        }
+      x_axis_gridlines: false
+      y_axis_gridlines: true
+      show_view_names: false
+      show_y_axis_labels: true
+      show_y_axis_ticks: true
+      y_axis_tick_density: default
+      show_x_axis_label: true
+      show_x_axis_ticks: true
+      x_axis_label: "Sales Rep"
+      legend_position: top
+      point_style: none
+      show_value_labels: true
+      label_density: 25
+      x_axis_scale: auto
+      y_axis_combined: true
+      ordering: none
+      show_null_labels: false
+      show_totals_labels: false
+      show_silhouette: false
+      totals_color: #808080
+      series_colors:
+        fct_opportunity_split.won_amount: #1A73E8
+        fct_quota.total_quota_amount: #34A853
+      series_labels:
+        fct_opportunity_split.won_amount: "Closed Won Sales ($)"
+        fct_quota.total_quota_amount: "Quota ($)"
+      row: 12
+      col: 0
+      width: 12
+      height: 8
 
     - name: table_ian_race
       title: "Ian Race Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_bullet_chart, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
         dim_user.manager_name: "Ian Race"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -153,28 +268,85 @@
         dim_user.region: Region
         fct_quota.total_quota_amount: Quota
         fct_opportunity_split.won_amount: "Closed Won Sales"
-        fct_opportunity_split.attainment_bullet_chart: "Attainment Chart"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
-      row: 16
-      col: 0
-      width: 24
-      height: 12
+      row: 12
+      col: 12
+      width: 12
+      height: 8
 
     - name: header_jim_oakes
       type: text
       title_text: "Team: Jim Oakes"
-      row: 28
+      row: 20
       col: 0
       width: 24
       height: 2
+
+    - name: chart_jim_oakes
+      title: "Jim Oakes Team - Sales vs Quota"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_bar
+      fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
+      filters:
+        dim_user.manager_name: "Jim Oakes"
+      sorts: ["fct_opportunity_split.won_amount desc"]
+      limit: 500
+      column_limit: 50
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      series_types:
+        fct_quota.total_quota_amount: scatter
+      advanced_vis_config: |-
+        {
+          "series": [
+            {},
+            {
+              "marker": {
+                "symbol": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjMwIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==)"
+              }
+            }
+          ]
+        }
+      x_axis_gridlines: false
+      y_axis_gridlines: true
+      show_view_names: false
+      show_y_axis_labels: true
+      show_y_axis_ticks: true
+      y_axis_tick_density: default
+      show_x_axis_label: true
+      show_x_axis_ticks: true
+      x_axis_label: "Sales Rep"
+      legend_position: top
+      point_style: none
+      show_value_labels: true
+      label_density: 25
+      x_axis_scale: auto
+      y_axis_combined: true
+      ordering: none
+      show_null_labels: false
+      show_totals_labels: false
+      show_silhouette: false
+      totals_color: #808080
+      series_colors:
+        fct_opportunity_split.won_amount: #1A73E8
+        fct_quota.total_quota_amount: #34A853
+      series_labels:
+        fct_opportunity_split.won_amount: "Closed Won Sales ($)"
+        fct_quota.total_quota_amount: "Quota ($)"
+      row: 22
+      col: 0
+      width: 12
+      height: 8
 
     - name: table_jim_oakes
       title: "Jim Oakes Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_bullet_chart, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
         dim_user.manager_name: "Jim Oakes"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -218,28 +390,85 @@
         dim_user.region: Region
         fct_quota.total_quota_amount: Quota
         fct_opportunity_split.won_amount: "Closed Won Sales"
-        fct_opportunity_split.attainment_bullet_chart: "Attainment Chart"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
-      row: 30
-      col: 0
-      width: 24
-      height: 12
+      row: 22
+      col: 12
+      width: 12
+      height: 8
 
     - name: header_jennifer_marsland
       type: text
       title_text: "Team: Jennifer Marsland"
-      row: 42
+      row: 30
       col: 0
       width: 24
       height: 2
+
+    - name: chart_jennifer_marsland
+      title: "Jennifer Marsland Team - Sales vs Quota"
+      model: gtm_analytics
+      explore: fct_quota
+      type: looker_bar
+      fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
+      filters:
+        dim_user.manager_name: "Jennifer Marsland"
+      sorts: ["fct_opportunity_split.won_amount desc"]
+      limit: 500
+      column_limit: 50
+      listen:
+        Quota Year: fct_quota.quota_date_year
+        Quota Type: fct_quota.quota_type
+      series_types:
+        fct_quota.total_quota_amount: scatter
+      advanced_vis_config: |-
+        {
+          "series": [
+            {},
+            {
+              "marker": {
+                "symbol": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjMwIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==)"
+              }
+            }
+          ]
+        }
+      x_axis_gridlines: false
+      y_axis_gridlines: true
+      show_view_names: false
+      show_y_axis_labels: true
+      show_y_axis_ticks: true
+      y_axis_tick_density: default
+      show_x_axis_label: true
+      show_x_axis_ticks: true
+      x_axis_label: "Sales Rep"
+      legend_position: top
+      point_style: none
+      show_value_labels: true
+      label_density: 25
+      x_axis_scale: auto
+      y_axis_combined: true
+      ordering: none
+      show_null_labels: false
+      show_totals_labels: false
+      show_silhouette: false
+      totals_color: #808080
+      series_colors:
+        fct_opportunity_split.won_amount: #1A73E8
+        fct_quota.total_quota_amount: #34A853
+      series_labels:
+        fct_opportunity_split.won_amount: "Closed Won Sales ($)"
+        fct_quota.total_quota_amount: "Quota ($)"
+      row: 32
+      col: 0
+      width: 12
+      height: 8
 
     - name: table_jennifer_marsland
       title: "Jennifer Marsland Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_bullet_chart, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
         dim_user.manager_name: "Jennifer Marsland"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -283,10 +512,9 @@
         dim_user.region: Region
         fct_quota.total_quota_amount: Quota
         fct_opportunity_split.won_amount: "Closed Won Sales"
-        fct_opportunity_split.attainment_bullet_chart: "Attainment Chart"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
-      row: 44
-      col: 0
-      width: 24
-      height: 12
+      row: 32
+      col: 12
+      width: 12
+      height: 8

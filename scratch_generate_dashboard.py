@@ -53,7 +53,65 @@ for manager in managers:
     })
     row_idx += 2
     
-    # Table
+    # Chart (Looker Bar with Advanced Vis Config)
+    dashboard['elements'].append({
+        'name': f'chart_{manager_id}',
+        'title': f'{manager} Team - Sales vs Quota',
+        'model': 'gtm_analytics',
+        'explore': 'fct_quota',
+        'type': 'looker_bar',
+        'fields': [
+            'dim_user.full_name',
+            'fct_opportunity_split.won_amount',
+            'fct_quota.total_quota_amount'
+        ],
+        'filters': {'dim_user.manager_name': f'"{manager}"'},
+        'sorts': ['fct_opportunity_split.won_amount desc'],
+        'limit': 500,
+        'column_limit': 50,
+        'listen': {
+            'Quota Year': 'fct_quota.quota_date_year',
+            'Quota Type': 'fct_quota.quota_type'
+        },
+        'series_types': {
+            'fct_quota.total_quota_amount': 'scatter'
+        },
+        'advanced_vis_config': '|-\n' + ' ' * 8 + '{\n' + ' ' * 8 + '  "series": [\n' + ' ' * 8 + '    {},\n' + ' ' * 8 + '    {\n' + ' ' * 8 + '      "marker": {\n' + ' ' * 8 + '        "symbol": "url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjMwIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==)"\n' + ' ' * 8 + '      }\n' + ' ' * 8 + '    }\n' + ' ' * 8 + '  ]\n' + ' ' * 8 + '}',
+        'x_axis_gridlines': False,
+        'y_axis_gridlines': True,
+        'show_view_names': False,
+        'show_y_axis_labels': True,
+        'show_y_axis_ticks': True,
+        'y_axis_tick_density': 'default',
+        'show_x_axis_label': True,
+        'show_x_axis_ticks': True,
+        'x_axis_label': 'Sales Rep',
+        'legend_position': 'top',
+        'point_style': 'none',
+        'show_value_labels': True,
+        'label_density': 25,
+        'x_axis_scale': 'auto',
+        'y_axis_combined': True,
+        'ordering': 'none',
+        'show_null_labels': False,
+        'show_totals_labels': False,
+        'show_silhouette': False,
+        'totals_color': '#808080',
+        'series_colors': {
+            'fct_opportunity_split.won_amount': '#1A73E8',
+            'fct_quota.total_quota_amount': '#34A853'
+        },
+        'series_labels': {
+            'fct_opportunity_split.won_amount': 'Closed Won Sales ($)',
+            'fct_quota.total_quota_amount': 'Quota ($)'
+        },
+        'row': row_idx,
+        'col': 0,
+        'width': 12,
+        'height': 8
+    })
+    
+    # Table (Reverted HTML field)
     dashboard['elements'].append({
         'name': f'table_{manager_id}',
         'title': f'{manager} Team - Quota Attainment Summary',
@@ -65,7 +123,6 @@ for manager in managers:
             'dim_user.region',
             'fct_quota.total_quota_amount',
             'fct_opportunity_split.won_amount',
-            'fct_opportunity_split.attainment_bullet_chart',
             'fct_opportunity_split.attainment_percent',
             'fct_opportunity_split.gap_to_quota'
         ],
@@ -116,16 +173,15 @@ for manager in managers:
             'dim_user.region': 'Region',
             'fct_quota.total_quota_amount': 'Quota',
             'fct_opportunity_split.won_amount': 'Closed Won Sales',
-            'fct_opportunity_split.attainment_bullet_chart': 'Attainment Chart',
             'fct_opportunity_split.attainment_percent': 'Attainment %',
             'fct_opportunity_split.gap_to_quota': 'Gap to Quota'
         },
         'row': row_idx,
-        'col': 0,
-        'width': 24,
-        'height': 12
+        'col': 12,
+        'width': 12,
+        'height': 8
     })
-    row_idx += 12
+    row_idx += 8
 
 def list_dict_to_yaml(data):
     lines = []
@@ -138,6 +194,8 @@ def list_dict_to_yaml(data):
     # Simple recursive YAML dumper tailored for LookML
     def dump_val(v, indent=2):
         if isinstance(v, str):
+            if v.startswith('|-'):
+                return v # Pre-formatted block scalar
             if ':' in v or '{' in v or '}' in v or ' ' in v and not v.startswith('"'):
                 return '\"' + v + '\"'
             return v
@@ -176,6 +234,8 @@ def list_dict_to_yaml(data):
             else:
                 if k == 'filters' and isinstance(d, dict):
                      res.append(f"{ind}{k}:")
+                elif k == 'advanced_vis_config':
+                     res.append(f"{ind}{k}: {v}")
                 else:
                     res.append(f"{ind}{k}: {dump_val(v)}")
         return res
