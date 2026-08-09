@@ -41,7 +41,7 @@ view: fct_quota {
 
   measure: total_quota_amount {
     type: sum
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${quota_amount} ;;
   }
 }

@@ -130,7 +130,7 @@ view: fct_opportunity_split {
   measure: total_split_amount {
     label: "Total Split Amount (USD)"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${split_amount_usd} ;;
   }
 
@@ -143,7 +143,7 @@ view: fct_opportunity_split {
   measure: won_amount {
     label: "Sales (Won Amount USD)"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${split_amount_usd} ;;
     filters: [is_won: "yes"]
   }
@@ -158,7 +158,7 @@ view: fct_opportunity_split {
   measure: closed_amount {
     label: "Closed Amount (USD)"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${split_amount_usd} ;;
     filters: [is_closed: "yes"]
   }
@@ -173,7 +173,7 @@ view: fct_opportunity_split {
   measure: open_pipeline_amount {
     label: "Open Pipeline (USD)"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${split_amount_usd} ;;
     filters: [is_closed: "no"]
   }
@@ -216,8 +216,38 @@ view: fct_opportunity_split {
   measure: gap_to_quota {
     label: "Gap to Quota (USD)"
     type: number
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${fct_quota.total_quota_amount} - ${won_amount} ;;
+  }
+
+  measure: attainment_bullet_chart {
+    label: "Attainment Bullet Chart"
+    type: number
+    sql: ${won_amount} ;;
+    html:
+      {% assign quota = fct_quota.total_quota_amount._value %}
+      {% assign sales = won_amount._value %}
+      
+      <!-- Liquid logic to scale the chart -->
+      {% assign max_val = quota %}
+      {% if sales > quota %}
+        {% assign max_val = sales %}
+      {% endif %}
+      
+      <!-- Avoid division by zero -->
+      {% assign max_val = max_val | plus: 0.0001 %}
+      {% assign quota_pct = quota | divided_by: max_val | times: 100 %}
+      {% assign sales_pct = sales | divided_by: max_val | times: 100 %}
+
+      <!-- Bullet Chart Structure -->
+      <div style="width: 100%; height: 20px; position: relative; display: flex; align-items: center;">
+        <div style="width: 100%; height: 20px; background-color: #f1f3f4; position: absolute; border-radius: 2px;"></div>
+        <div style="width: {{ sales_pct }}%; height: 20px; background-color: #1A73E8; position: absolute; border-radius: 2px;"></div>
+        
+        <!-- Base64 SVG Marker (Dash, 50% height of the 20px bar = 10px) -->
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjEwIj48cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSIxMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" style="position: absolute; left: calc({{ quota_pct }}% - 1px); height: 10px; width: 2px; z-index: 2;" />
+      </div>
+    ;;
   }
 
   measure: open_pipeline_qualified_amount {

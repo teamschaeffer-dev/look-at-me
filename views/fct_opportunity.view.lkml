@@ -60,7 +60,7 @@ view: fct_opportunity {
   measure: average_deal_size_cw {
     label: "Average Deal Size (Closed Won)"
     type: average
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${opportunity_amount_usd} ;;
     filters: [is_won: "yes"]
   }
@@ -68,7 +68,7 @@ view: fct_opportunity {
   measure: average_deal_size_open {
     label: "Average Deal Size (Open)"
     type: average
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${opportunity_amount_usd} ;;
     filters: [is_closed: "no"]
   }
@@ -96,7 +96,7 @@ view: fct_opportunity {
   measure: deal_growth_amount {
     label: "Deal Growth (USD)"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_millions
     sql: ${opportunity_amount_usd} - ${initial_opportunity_amount_usd} ;;
     filters: [is_won: "yes"]
   }

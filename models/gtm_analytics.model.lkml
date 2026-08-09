@@ -3,6 +3,10 @@ connection: "snowflake_sales_db"
 include: "/views/*.view.lkml"
 include: "/dashboards/*.dashboard.lookml"
 
+named_value_format: usd_millions {
+  value_format: "$0.00,,\"M\""
+}
+
 explore: fct_quota {
   label: "Sales Performance Dashboard"
 

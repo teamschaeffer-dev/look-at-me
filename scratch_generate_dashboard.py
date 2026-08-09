@@ -1,0 +1,203 @@
+import json
+
+managers = ['Chris Welch', 'Ian Race', 'Jim Oakes', 'Jennifer Marsland']
+
+dashboard = {
+    'dashboard': 'sales_rep_performance',
+    'title': 'Sales Rep Performance',
+    'layout': 'newspaper',
+    'preferred_viewer': 'dashboards-next',
+    'description': 'Tracks Closed Won sales versus quota for each sales rep.',
+    'filters': [
+        {
+            'name': 'Quota Year',
+            'title': 'Quota Year',
+            'type': 'field_filter',
+            'default_value': 'this year',
+            'allow_multiple_values': True,
+            'required': False,
+            'ui_config': {'type': 'advanced', 'display': 'popover'},
+            'model': 'gtm_analytics',
+            'explore': 'fct_quota',
+            'field': 'fct_quota.quota_date_year'
+        },
+        {
+            'name': 'Quota Type',
+            'title': 'Quota Type',
+            'type': 'field_filter',
+            'default_value': 'Full Quota',
+            'allow_multiple_values': False,
+            'required': True,
+            'ui_config': {'type': 'dropdown_menu', 'display': 'inline'},
+            'model': 'gtm_analytics',
+            'explore': 'fct_quota',
+            'field': 'fct_quota.quota_type'
+        }
+    ],
+    'elements': []
+}
+
+row_idx = 0
+for manager in managers:
+    manager_id = manager.lower().replace(' ', '_')
+    
+    # Header
+    dashboard['elements'].append({
+        'name': f'header_{manager_id}',
+        'type': 'text',
+        'title_text': f'Team: {manager}',
+        'row': row_idx,
+        'col': 0,
+        'width': 24,
+        'height': 2
+    })
+    row_idx += 2
+    
+    # Table
+    dashboard['elements'].append({
+        'name': f'table_{manager_id}',
+        'title': f'{manager} Team - Quota Attainment Summary',
+        'model': 'gtm_analytics',
+        'explore': 'fct_quota',
+        'type': 'looker_grid',
+        'fields': [
+            'dim_user.full_name',
+            'dim_user.region',
+            'fct_quota.total_quota_amount',
+            'fct_opportunity_split.won_amount',
+            'fct_opportunity_split.attainment_bullet_chart',
+            'fct_opportunity_split.attainment_percent',
+            'fct_opportunity_split.gap_to_quota'
+        ],
+        'filters': {'dim_user.manager_name': f'"{manager}"'},
+        'sorts': ['fct_opportunity_split.won_amount desc'],
+        'limit': 500,
+        'column_limit': 50,
+        'show_view_names': False,
+        'show_row_numbers': True,
+        'truncate_column_names': False,
+        'hide_totals': False,
+        'hide_row_totals': False,
+        'table_theme': 'white',
+        'limit_displayed_rows': False,
+        'enable_conditional_formatting': True,
+        'conditional_formatting_include_totals': False,
+        'conditional_formatting_include_nulls': False,
+        'conditional_formatting': [
+            {
+                'type': 'along a scale...',
+                'value': None,
+                'background_color': '#1A73E8',
+                'font_color': None,
+                'color_application': {
+                    'collection_id': '7c5612da-06ff-4abb-8ef7-47b28236d655',
+                    'custom': {
+                        'id': '5b4e72ce-9257-4ba6-8a7e-1ff9f4305886',
+                        'label': 'Custom',
+                        'type': 'continuous',
+                        'stops': [
+                            {'color': '#F9AB00', 'offset': 0},
+                            {'color': '#34A853', 'offset': 100}
+                        ]
+                    }
+                },
+                'bold': False,
+                'italic': False,
+                'strikethrough': False,
+                'fields': ['fct_opportunity_split.attainment_percent']
+            }
+        ],
+        'listen': {
+            'Quota Year': 'fct_quota.quota_date_year',
+            'Quota Type': 'fct_quota.quota_type'
+        },
+        'series_labels': {
+            'dim_user.full_name': 'Sales Rep',
+            'dim_user.region': 'Region',
+            'fct_quota.total_quota_amount': 'Quota',
+            'fct_opportunity_split.won_amount': 'Closed Won Sales',
+            'fct_opportunity_split.attainment_bullet_chart': 'Attainment Chart',
+            'fct_opportunity_split.attainment_percent': 'Attainment %',
+            'fct_opportunity_split.gap_to_quota': 'Gap to Quota'
+        },
+        'row': row_idx,
+        'col': 0,
+        'width': 24,
+        'height': 12
+    })
+    row_idx += 12
+
+def list_dict_to_yaml(data):
+    lines = []
+    lines.append('- dashboard: ' + data['dashboard'])
+    lines.append('  title: ' + data['title'])
+    lines.append('  layout: ' + data['layout'])
+    lines.append('  preferred_viewer: ' + data['preferred_viewer'])
+    lines.append('  description: \"' + data['description'] + '\"')
+    
+    # Simple recursive YAML dumper tailored for LookML
+    def dump_val(v, indent=2):
+        if isinstance(v, str):
+            if ':' in v or '{' in v or '}' in v or ' ' in v and not v.startswith('"'):
+                return '\"' + v + '\"'
+            return v
+        if isinstance(v, bool):
+            return 'true' if v else 'false'
+        if v is None:
+            return ''
+        return str(v)
+    
+    def dump_dict(d, indent):
+        res = []
+        for k, v in d.items():
+            ind = ' ' * indent
+            if isinstance(v, dict):
+                if not v:
+                    res.append(f"{ind}{k}: {{}}")
+                else:
+                    res.append(f"{ind}{k}:")
+                    res.extend(dump_dict(v, indent + 2))
+            elif isinstance(v, list):
+                if not v:
+                    res.append(f"{ind}{k}: []")
+                elif isinstance(v[0], dict):
+                    res.append(f"{ind}{k}:")
+                    for item in v:
+                        res.append(f"{ind}  -")
+                        item_lines = dump_dict(item, indent + 4)
+                        # Fix the first line of the item
+                        if item_lines:
+                            res[-1] = f"{ind}  - {item_lines[0].lstrip()}"
+                            res.extend(item_lines[1:])
+                else:
+                    # simple list
+                    list_str = '[' + ', '.join([dump_val(x) for x in v]) + ']'
+                    res.append(f"{ind}{k}: {list_str}")
+            else:
+                if k == 'filters' and isinstance(d, dict):
+                     res.append(f"{ind}{k}:")
+                else:
+                    res.append(f"{ind}{k}: {dump_val(v)}")
+        return res
+
+    lines.append('')
+    lines.append('  filters:')
+    for f in data['filters']:
+        lines.append('    -')
+        flines = dump_dict(f, 6)
+        lines[-1] = '    - ' + flines[0].lstrip()
+        lines.extend(flines[1:])
+        
+    lines.append('')
+    lines.append('  elements:')
+    for el in data['elements']:
+        lines.append('    -')
+        elines = dump_dict(el, 6)
+        lines[-1] = '    - ' + elines[0].lstrip()
+        lines.extend(elines[1:])
+        lines.append('')
+
+    return '\n'.join(lines)
+
+with open('dashboards/sales_rep_performance.dashboard.lookml', 'w') as f:
+    f.write(list_dict_to_yaml(dashboard))
