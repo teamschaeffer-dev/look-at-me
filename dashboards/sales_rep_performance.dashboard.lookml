@@ -70,15 +70,15 @@
           ]
         }
       x_axis_gridlines: false
-      y_axis_gridlines: true
+      y_axis_gridlines: false
       show_view_names: false
-      show_y_axis_labels: true
-      show_y_axis_ticks: true
+      show_y_axis_labels: false
+      show_y_axis_ticks: false
       y_axis_tick_density: default
-      show_x_axis_label: true
-      show_x_axis_ticks: true
+      show_x_axis_label: false
+      show_x_axis_ticks: false
       x_axis_label: "Sales Rep"
-      legend_position: top
+      legend_position: bottom
       point_style: none
       show_value_labels: true
       label_density: 25
@@ -204,15 +204,15 @@
           ]
         }
       x_axis_gridlines: false
-      y_axis_gridlines: true
+      y_axis_gridlines: false
       show_view_names: false
-      show_y_axis_labels: true
-      show_y_axis_ticks: true
+      show_y_axis_labels: false
+      show_y_axis_ticks: false
       y_axis_tick_density: default
-      show_x_axis_label: true
-      show_x_axis_ticks: true
+      show_x_axis_label: false
+      show_x_axis_ticks: false
       x_axis_label: "Sales Rep"
-      legend_position: top
+      legend_position: bottom
       point_style: none
       show_value_labels: true
       label_density: 25
@@ -338,15 +338,15 @@
           ]
         }
       x_axis_gridlines: false
-      y_axis_gridlines: true
+      y_axis_gridlines: false
       show_view_names: false
-      show_y_axis_labels: true
-      show_y_axis_ticks: true
+      show_y_axis_labels: false
+      show_y_axis_ticks: false
       y_axis_tick_density: default
-      show_x_axis_label: true
-      show_x_axis_ticks: true
+      show_x_axis_label: false
+      show_x_axis_ticks: false
       x_axis_label: "Sales Rep"
-      legend_position: top
+      legend_position: bottom
       point_style: none
       show_value_labels: true
       label_density: 25
@@ -472,15 +472,15 @@
           ]
         }
       x_axis_gridlines: false
-      y_axis_gridlines: true
+      y_axis_gridlines: false
       show_view_names: false
-      show_y_axis_labels: true
-      show_y_axis_ticks: true
+      show_y_axis_labels: false
+      show_y_axis_ticks: false
       y_axis_tick_density: default
-      show_x_axis_label: true
-      show_x_axis_ticks: true
+      show_x_axis_label: false
+      show_x_axis_ticks: false
       x_axis_label: "Sales Rep"
-      legend_position: top
+      legend_position: bottom
       point_style: none
       show_value_labels: true
       label_density: 25
