@@ -31,6 +31,19 @@
       explore: fct_quota
       field: fct_quota.quota_type
 
+    - name: Team
+      title: Team
+      type: field_filter
+      default_value: ""
+      allow_multiple_values: true
+      required: false
+      ui_config:
+        type: tag_list
+        display: popover
+      model: gtm_analytics
+      explore: fct_quota
+      field: dim_user.manager_name
+
   elements:
     - name: sales_vs_quota_chart
       title: "Closed Won Sales vs Quota by Sales Rep"
@@ -38,6 +51,7 @@
       explore: fct_quota
       type: looker_column
       fields: [
+        dim_user.manager_name,
         dim_user.full_name,
         fct_opportunity_split.won_amount,
         fct_quota.total_quota_amount
@@ -48,6 +62,7 @@
       listen:
         Quota Year: fct_quota.quota_date_year
         Quota Type: fct_quota.quota_type
+        Team: dim_user.manager_name
       x_axis_gridlines: false
       y_axis_gridlines: true
       show_view_names: false
@@ -86,6 +101,7 @@
       explore: fct_quota
       type: looker_grid
       fields: [
+        dim_user.manager_name,
         dim_user.full_name,
         dim_user.region,
         fct_quota.total_quota_amount,
@@ -129,7 +145,9 @@
       listen:
         Quota Year: fct_quota.quota_date_year
         Quota Type: fct_quota.quota_type
+        Team: dim_user.manager_name
       series_labels:
+        dim_user.manager_name: "Team"
         dim_user.full_name: "Sales Rep"
         dim_user.region: "Region"
         fct_quota.total_quota_amount: "Quota"

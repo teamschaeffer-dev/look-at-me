@@ -24,7 +24,14 @@ view: dim_user {
 
   dimension: manager_id {
     type: string
+    hidden: yes
     sql: ${TABLE}.manager_id ;;
+  }
+
+  dimension: manager_name {
+    label: "Team"
+    type: string
+    sql: ${TABLE}.manager_name ;;
   }
 
   dimension: role_name {

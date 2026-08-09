@@ -23,7 +23,7 @@ explore: fct_quota {
     type: left_outer
     relationship: one_to_many
     sql_on: ${dim_user.user_id} = ${fct_opportunity_split.split_user_id} 
-        AND ${fct_quota.quota_date} = date_trunc('month', ${fct_opportunity_split.close_date}) ;;
+        AND ${fct_quota.quota_date_raw} = date_trunc('month', ${fct_opportunity_split.close_date_raw}) ;;
   }
 
   join: fct_opportunity {
