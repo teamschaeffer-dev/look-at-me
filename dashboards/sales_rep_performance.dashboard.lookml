@@ -31,22 +31,22 @@
       field: fct_quota.quota_type
 
   elements:
-    - name: header_chris_welch
+    - name: header_enterprise
       type: text
-      title_text: "Team: Chris Welch"
+      title_text: "Team: Enterprise"
       row: 0
       col: 0
       width: 24
       height: 2
 
-    - name: gauge_chris_welch
-      title: "Chris Welch - Manager Attainment"
+    - name: gauge_enterprise
+      title: "Enterprise - Team Attainment"
       model: gtm_analytics
       explore: fct_quota
       type: looker_column
       fields: [fct_opportunity_split.manager_attainment_percent]
       filters:
-        dim_user.manager_name: "Chris Welch"
+        fct_quota.sales_team: "Enterprise"
       listen:
         Quota Year: fct_quota.quota_date_year
         Quota Type: fct_quota.quota_type
@@ -71,14 +71,14 @@
       width: 6
       height: 8
 
-    - name: chart_chris_welch
-      title: "Chris Welch Team - Sales vs Quota"
+    - name: chart_enterprise
+      title: "Enterprise Team - Sales vs Quota"
       model: gtm_analytics
       explore: fct_quota
       type: looker_bar
       fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
       filters:
-        dim_user.manager_name: "Chris Welch"
+        fct_quota.sales_team: "Enterprise"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50
@@ -132,14 +132,14 @@
       width: 8
       height: 8
 
-    - name: table_chris_welch
-      title: "Chris Welch Team - Quota Attainment Summary"
+    - name: table_enterprise
+      title: "Enterprise Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
       fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
-        dim_user.manager_name: "Chris Welch"
+        fct_quota.sales_team: "Enterprise"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50
@@ -197,22 +197,22 @@
       width: 10
       height: 8
 
-    - name: header_ian_race
+    - name: header_canada
       type: text
-      title_text: "Team: Ian Race"
+      title_text: "Team: Canada"
       row: 10
       col: 0
       width: 24
       height: 2
 
-    - name: gauge_ian_race
-      title: "Ian Race - Manager Attainment"
+    - name: gauge_canada
+      title: "Canada - Team Attainment"
       model: gtm_analytics
       explore: fct_quota
       type: looker_column
       fields: [fct_opportunity_split.manager_attainment_percent]
       filters:
-        dim_user.manager_name: "Ian Race"
+        fct_quota.sales_team: "Canada"
       listen:
         Quota Year: fct_quota.quota_date_year
         Quota Type: fct_quota.quota_type
@@ -237,14 +237,14 @@
       width: 6
       height: 8
 
-    - name: chart_ian_race
-      title: "Ian Race Team - Sales vs Quota"
+    - name: chart_canada
+      title: "Canada Team - Sales vs Quota"
       model: gtm_analytics
       explore: fct_quota
       type: looker_bar
       fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
       filters:
-        dim_user.manager_name: "Ian Race"
+        fct_quota.sales_team: "Canada"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50
@@ -298,14 +298,14 @@
       width: 8
       height: 8
 
-    - name: table_ian_race
-      title: "Ian Race Team - Quota Attainment Summary"
+    - name: table_canada
+      title: "Canada Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
       fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
-        dim_user.manager_name: "Ian Race"
+        fct_quota.sales_team: "Canada"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50
@@ -363,22 +363,22 @@
       width: 10
       height: 8
 
-    - name: header_jim_oakes
+    - name: header_mid_market_east
       type: text
-      title_text: "Team: Jim Oakes"
+      title_text: "Team: Mid Market East"
       row: 20
       col: 0
       width: 24
       height: 2
 
-    - name: gauge_jim_oakes
-      title: "Jim Oakes - Manager Attainment"
+    - name: gauge_mid_market_east
+      title: "Mid Market East - Team Attainment"
       model: gtm_analytics
       explore: fct_quota
       type: looker_column
       fields: [fct_opportunity_split.manager_attainment_percent]
       filters:
-        dim_user.manager_name: "Jim Oakes"
+        fct_quota.sales_team: "Mid Market East"
       listen:
         Quota Year: fct_quota.quota_date_year
         Quota Type: fct_quota.quota_type
@@ -403,14 +403,14 @@
       width: 6
       height: 8
 
-    - name: chart_jim_oakes
-      title: "Jim Oakes Team - Sales vs Quota"
+    - name: chart_mid_market_east
+      title: "Mid Market East Team - Sales vs Quota"
       model: gtm_analytics
       explore: fct_quota
       type: looker_bar
       fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
       filters:
-        dim_user.manager_name: "Jim Oakes"
+        fct_quota.sales_team: "Mid Market East"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50
@@ -464,14 +464,14 @@
       width: 8
       height: 8
 
-    - name: table_jim_oakes
-      title: "Jim Oakes Team - Quota Attainment Summary"
+    - name: table_mid_market_east
+      title: "Mid Market East Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
       fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
-        dim_user.manager_name: "Jim Oakes"
+        fct_quota.sales_team: "Mid Market East"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50
@@ -529,22 +529,22 @@
       width: 10
       height: 8
 
-    - name: header_jennifer_marsland
+    - name: header_mid_market_west
       type: text
-      title_text: "Team: Jennifer Marsland"
+      title_text: "Team: Mid Market West"
       row: 30
       col: 0
       width: 24
       height: 2
 
-    - name: gauge_jennifer_marsland
-      title: "Jennifer Marsland - Manager Attainment"
+    - name: gauge_mid_market_west
+      title: "Mid Market West - Team Attainment"
       model: gtm_analytics
       explore: fct_quota
       type: looker_column
       fields: [fct_opportunity_split.manager_attainment_percent]
       filters:
-        dim_user.manager_name: "Jennifer Marsland"
+        fct_quota.sales_team: "Mid Market West"
       listen:
         Quota Year: fct_quota.quota_date_year
         Quota Type: fct_quota.quota_type
@@ -569,14 +569,14 @@
       width: 6
       height: 8
 
-    - name: chart_jennifer_marsland
-      title: "Jennifer Marsland Team - Sales vs Quota"
+    - name: chart_mid_market_west
+      title: "Mid Market West Team - Sales vs Quota"
       model: gtm_analytics
       explore: fct_quota
       type: looker_bar
       fields: [dim_user.full_name, fct_opportunity_split.won_amount, fct_quota.total_quota_amount]
       filters:
-        dim_user.manager_name: "Jennifer Marsland"
+        fct_quota.sales_team: "Mid Market West"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50
@@ -630,14 +630,14 @@
       width: 8
       height: 8
 
-    - name: table_jennifer_marsland
-      title: "Jennifer Marsland Team - Quota Attainment Summary"
+    - name: table_mid_market_west
+      title: "Mid Market West Team - Quota Attainment Summary"
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
       fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
       filters:
-        dim_user.manager_name: "Jennifer Marsland"
+        fct_quota.sales_team: "Mid Market West"
       sorts: ["fct_opportunity_split.won_amount desc"]
       limit: 500
       column_limit: 50

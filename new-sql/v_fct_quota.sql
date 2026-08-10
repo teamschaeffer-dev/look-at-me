@@ -7,5 +7,7 @@ select
     date_from_parts(try_to_number(year), try_to_number(month), 1) as quota_date,
     year,
     quarter,
-    month
+    month,
+    sales_team,
+    is_leader
 from fake_db.fake_schema.rep_quotas;

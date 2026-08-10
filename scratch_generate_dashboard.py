@@ -1,6 +1,6 @@
 import json
 
-managers = ['Chris Welch', 'Ian Race', 'Jim Oakes', 'Jennifer Marsland']
+managers = ['Enterprise', 'Canada', 'Mid Market East', 'Mid Market West']
 
 dashboard = {
     'dashboard': 'sales_rep_performance',
@@ -56,14 +56,14 @@ for manager in managers:
     # Gauge Chart
     dashboard['elements'].append({
         'name': f'gauge_{manager_id}',
-        'title': f'{manager} - Manager Attainment',
+        'title': f'{manager} - Team Attainment',
         'model': 'gtm_analytics',
         'explore': 'fct_quota',
         'type': 'looker_column',
         'fields': [
             'fct_opportunity_split.manager_attainment_percent'
         ],
-        'filters': {'dim_user.manager_name': f'"{manager}"'},
+        'filters': {'fct_quota.sales_team': f'"{manager}"'},
         'listen': {
             'Quota Year': 'fct_quota.quota_date_year',
             'Quota Type': 'fct_quota.quota_type'
@@ -87,7 +87,7 @@ for manager in managers:
             'fct_opportunity_split.won_amount',
             'fct_quota.total_quota_amount'
         ],
-        'filters': {'dim_user.manager_name': f'"{manager}"'},
+        'filters': {'fct_quota.sales_team': f'"{manager}"'},
         'sorts': ['fct_opportunity_split.won_amount desc'],
         'limit': 500,
         'column_limit': 50,
@@ -148,7 +148,7 @@ for manager in managers:
             'fct_opportunity_split.attainment_percent',
             'fct_opportunity_split.gap_to_quota'
         ],
-        'filters': {'dim_user.manager_name': f'"{manager}"'},
+        'filters': {'fct_quota.sales_team': f'"{manager}"'},
         'sorts': ['fct_opportunity_split.won_amount desc'],
         'limit': 500,
         'column_limit': 50,

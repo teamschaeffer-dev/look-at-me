@@ -39,6 +39,17 @@ view: fct_quota {
     sql: ${TABLE}.quota_amount ;;
   }
 
+  dimension: sales_team {
+    label: "Sales Team"
+    type: string
+    sql: ${TABLE}.sales_team ;;
+  }
+
+  dimension: is_leader {
+    type: yesno
+    sql: ${TABLE}.is_leader ;;
+  }
+
   measure: total_quota_amount {
     type: sum
     value_format_name: usd_millions
