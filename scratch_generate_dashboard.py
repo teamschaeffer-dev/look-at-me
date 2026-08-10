@@ -146,7 +146,11 @@ for manager in managers:
             'fct_quota.total_quota_amount',
             'fct_opportunity_split.won_amount',
             'fct_opportunity_split.attainment_percent',
-            'fct_opportunity_split.gap_to_quota'
+            'fct_opportunity_split.gap_to_quota',
+            'fct_opportunity_split.open_pipeline_qualified_amount',
+            'fct_opportunity_split.open_pipeline_qualified_count',
+            'fct_opportunity_split.pipeline_coverage',
+            'fct_opportunity_split.conversion_rate'
         ],
         'filters': {'fct_quota.sales_team': f'"{manager}"'},
         'sorts': ['fct_opportunity_split.won_amount desc'],
@@ -202,7 +206,11 @@ for manager in managers:
             'fct_quota.total_quota_amount': 'Quota',
             'fct_opportunity_split.won_amount': 'Closed Won Sales',
             'fct_opportunity_split.attainment_percent': 'Attainment %',
-            'fct_opportunity_split.gap_to_quota': 'Gap to Quota'
+            'fct_opportunity_split.gap_to_quota': 'Gap to Quota',
+            'fct_opportunity_split.open_pipeline_qualified_amount': 'Qualified Open Pipeline ($)',
+            'fct_opportunity_split.open_pipeline_qualified_count': 'Qualified Open Pipeline (#)',
+            'fct_opportunity_split.pipeline_coverage': 'Pipeline Coverage',
+            'fct_opportunity_split.conversion_rate': 'Conversion Rate'
         },
         'row': row_idx,
         'col': 14,

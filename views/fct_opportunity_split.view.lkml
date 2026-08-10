@@ -228,9 +228,17 @@ view: fct_opportunity_split {
   }
 
   measure: open_pipeline_qualified_amount {
+    label: "Qualified Open Pipeline ($)"
     type: sum
-    hidden: yes
+    value_format_name: usd_millions
     sql: ${split_amount_usd} ;;
+    filters: [is_closed: "no", reached_qualified: "yes"]
+  }
+
+  measure: open_pipeline_qualified_count {
+    label: "Qualified Open Pipeline (#)"
+    type: count_distinct
+    sql: ${opportunity_id} ;;
     filters: [is_closed: "no", reached_qualified: "yes"]
   }
 

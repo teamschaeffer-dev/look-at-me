@@ -137,7 +137,7 @@
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota, fct_opportunity_split.open_pipeline_qualified_amount, fct_opportunity_split.open_pipeline_qualified_count, fct_opportunity_split.pipeline_coverage, fct_opportunity_split.conversion_rate]
       filters:
         fct_quota.sales_team: "Enterprise"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -192,6 +192,10 @@
         fct_opportunity_split.won_amount: "Closed Won Sales"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
+        fct_opportunity_split.open_pipeline_qualified_amount: "Qualified Open Pipeline ($)"
+        fct_opportunity_split.open_pipeline_qualified_count: "Qualified Open Pipeline (#)"
+        fct_opportunity_split.pipeline_coverage: "Pipeline Coverage"
+        fct_opportunity_split.conversion_rate: "Conversion Rate"
       row: 2
       col: 14
       width: 10
@@ -303,7 +307,7 @@
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota, fct_opportunity_split.open_pipeline_qualified_amount, fct_opportunity_split.open_pipeline_qualified_count, fct_opportunity_split.pipeline_coverage, fct_opportunity_split.conversion_rate]
       filters:
         fct_quota.sales_team: "Canada"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -358,6 +362,10 @@
         fct_opportunity_split.won_amount: "Closed Won Sales"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
+        fct_opportunity_split.open_pipeline_qualified_amount: "Qualified Open Pipeline ($)"
+        fct_opportunity_split.open_pipeline_qualified_count: "Qualified Open Pipeline (#)"
+        fct_opportunity_split.pipeline_coverage: "Pipeline Coverage"
+        fct_opportunity_split.conversion_rate: "Conversion Rate"
       row: 12
       col: 14
       width: 10
@@ -469,7 +477,7 @@
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota, fct_opportunity_split.open_pipeline_qualified_amount, fct_opportunity_split.open_pipeline_qualified_count, fct_opportunity_split.pipeline_coverage, fct_opportunity_split.conversion_rate]
       filters:
         fct_quota.sales_team: "Mid Market East"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -524,6 +532,10 @@
         fct_opportunity_split.won_amount: "Closed Won Sales"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
+        fct_opportunity_split.open_pipeline_qualified_amount: "Qualified Open Pipeline ($)"
+        fct_opportunity_split.open_pipeline_qualified_count: "Qualified Open Pipeline (#)"
+        fct_opportunity_split.pipeline_coverage: "Pipeline Coverage"
+        fct_opportunity_split.conversion_rate: "Conversion Rate"
       row: 22
       col: 14
       width: 10
@@ -635,7 +647,7 @@
       model: gtm_analytics
       explore: fct_quota
       type: looker_grid
-      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota]
+      fields: [dim_user.full_name, dim_user.region, fct_quota.total_quota_amount, fct_opportunity_split.won_amount, fct_opportunity_split.attainment_percent, fct_opportunity_split.gap_to_quota, fct_opportunity_split.open_pipeline_qualified_amount, fct_opportunity_split.open_pipeline_qualified_count, fct_opportunity_split.pipeline_coverage, fct_opportunity_split.conversion_rate]
       filters:
         fct_quota.sales_team: "Mid Market West"
       sorts: ["fct_opportunity_split.won_amount desc"]
@@ -690,6 +702,10 @@
         fct_opportunity_split.won_amount: "Closed Won Sales"
         fct_opportunity_split.attainment_percent: "Attainment %"
         fct_opportunity_split.gap_to_quota: "Gap to Quota"
+        fct_opportunity_split.open_pipeline_qualified_amount: "Qualified Open Pipeline ($)"
+        fct_opportunity_split.open_pipeline_qualified_count: "Qualified Open Pipeline (#)"
+        fct_opportunity_split.pipeline_coverage: "Pipeline Coverage"
+        fct_opportunity_split.conversion_rate: "Conversion Rate"
       row: 32
       col: 14
       width: 10
