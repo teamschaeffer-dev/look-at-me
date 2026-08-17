@@ -4,7 +4,7 @@ view: dim_user {
   dimension: user_id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.user_id ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: user_key {
@@ -19,7 +19,7 @@ view: dim_user {
 
   dimension: full_name {
     type: string
-    sql: ${TABLE}.full_name ;;
+    sql: ${TABLE}.name ;;
   }
 
   dimension: manager_id {
